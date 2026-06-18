@@ -1,12 +1,3 @@
-const events = [
-  { date: "May 11– June 6", title: "Enrollment Period", type: "Enrollment" },
-  { date: "June 17", title: "Start of Classes", type: "Enrollment" },
-  { date: "Oct 20–22", title: "-", type: "Exams" },
-  { date: "March 30", title: "Clearance Deadline", type: "Deadlines" },
-  { date: "Mar 10–12", title: "-", type: "Exams" },
-  { date: "May 20–25", title: "-", type: "Exams" },
-];
-
 const calendarDiv = document.getElementById("calendarEvents");
 const importantList = document.getElementById("importantDates");
 
