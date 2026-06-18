@@ -1,6 +1,4 @@
 const calendarDiv = document.getElementById("calendarEvents");
-const importantList = document.getElementById("importantDates");
-
 function loadEvents(filter="all") {
   calendarDiv.innerHTML = "";
   importantList.innerHTML = "";
