@@ -1,59 +1,21 @@
 const events = [
   { date: "June 6", title: "Enrollment", type: "Enrollment" },
   { date: "June 17", title: "Start of Classes", type: "Enrollment" },
-  { date: "June-July", title: "BEIS Updating of School Profile", type: "Enrollment" },
-];
-
-const calendarDiv = document.getElementById("calendarEvents");
-const importantList = document.getElementById("importantDates");
-
-function loadEvents(filter="all") {
-  calendarDiv.innerHTML = "";
-
-  events.forEach(e => {
-    if (filter === "all" || e.type === filter) {
-
-      let div = document.createElement("div");
-      div.className = "glass";
-      div.innerHTML = `<strong>${e.date}</strong> - ${e.title}`;
-      div.onclick = () => openModal(e);
-
-      calendarDiv.appendChild(div);
-    }
-  });
-}
-
-function filterEvents(type) {
-  loadEvents(type);
-}
-
-function openModal(event) {
-  document.getElementById("modal").style.display = "block";
-  document.getElementById("modalText").innerText =
-    `${event.date} - ${event.title}`;
-}
-
-function closeModal() {
-  document.getElementById("modal").style.display = "none";
-}
-
-const events = [
-  { date: "June 6", title: "Enrollment", type: "Deadlines" },
-  { date: "June 17", title: "Start of Classes", type: "Deadlines" },
   { date: "June-July", title: "BEIS Updating of School Profile", type: "Deadlines" },
 ];
 
 const calendarDiv = document.getElementById("calendarEvents");
 const importantList = document.getElementById("importantDates");
 
-function loadEvents(filter="all") {
+function loadEvents(filter = "all") {
+  if (!calendarDiv) return;
   calendarDiv.innerHTML = "";
 
   events.forEach(e => {
     if (filter === "all" || e.type === filter) {
-
-      let div = document.createElement("div");
-      div.className = "glass";
+      const div = document.createElement("div");
+      // keep the glass styling and add the category class (Enrollment/Deadlines/Exams)
+      div.className = `glass card ${e.type}`;
       div.innerHTML = `<strong>${e.date}</strong> - ${e.title}`;
       div.onclick = () => openModal(e);
 
@@ -67,16 +29,16 @@ function filterEvents(type) {
 }
 
 function openModal(event) {
-  document.getElementById("modal").style.display = "block";
-  document.getElementById("modalText").innerText =
-    `${event.date} - ${event.title}`;
+  const modal = document.getElementById("modal");
+  const modalText = document.getElementById("modalText");
+  if (!modal || !modalText) return;
+  modal.style.display = "block";
+  modalText.innerText = `${event.date} - ${event.title}`;
 }
 
 function closeModal() {
-  document.getElementById("modal").style.display = "none";
+  const modal = document.getElementById("modal");
+  if (modal) modal.style.display = "none";
 }
-
-
 
 loadEvents();
-}
