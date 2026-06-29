@@ -1,7 +1,7 @@
 const events = [
   { date: "June 6", title: "Enrollment", type: "Enrollment" },
   { date: "June 17", title: "Start of Classes", type: "Enrollment" },
-  { date: "June 7- July 15", title: "BEIS Updating of School Profile", type: "Enrollment" },
+  { date: "June 7", title: "BEIS Updating of School Profile", type: "Enrollment" },
 ];
 
 const calendarDiv = document.getElementById("calendarEvents");
