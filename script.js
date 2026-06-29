@@ -1,21 +1,19 @@
 const events = [
   { date: "June 6", title: "Enrollment", type: "Enrollment" },
   { date: "June 17", title: "Start of Classes", type: "Enrollment" },
-  { date: "June-July", title: "BEIS Updating of School Profile", type: "Deadlines" },
 ];
 
 const calendarDiv = document.getElementById("calendarEvents");
 const importantList = document.getElementById("importantDates");
 
-function loadEvents(filter = "all") {
-  if (!calendarDiv) return;
+function loadEvents(filter="all") {
   calendarDiv.innerHTML = "";
 
   events.forEach(e => {
     if (filter === "all" || e.type === filter) {
-      const div = document.createElement("div");
-      // keep the glass styling and add the category class (Enrollment/Deadlines/Exams)
-      div.className = `glass card ${e.type}`;
+
+      let div = document.createElement("div");
+      div.className = "glass";
       div.innerHTML = `<strong>${e.date}</strong> - ${e.title}`;
       div.onclick = () => openModal(e);
 
@@ -29,16 +27,13 @@ function filterEvents(type) {
 }
 
 function openModal(event) {
-  const modal = document.getElementById("modal");
-  const modalText = document.getElementById("modalText");
-  if (!modal || !modalText) return;
-  modal.style.display = "block";
-  modalText.innerText = `${event.date} - ${event.title}`;
+  document.getElementById("modal").style.display = "block";
+  document.getElementById("modalText").innerText =
+    `${event.date} - ${event.title}`;
 }
 
 function closeModal() {
-  const modal = document.getElementById("modal");
-  if (modal) modal.style.display = "none";
+  document.getElementById("modal").style.display = "none";
 }
 
 loadEvents();
